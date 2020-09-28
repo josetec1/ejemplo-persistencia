@@ -108,16 +108,18 @@ class MedicoController {
         render medico.id
     }
     def actualizarSinSet(Long medicoId) {
-        Medico medico = medicoService.get(medicoId)
-        medico.cambiarNombre("se cambio")
-        this.save(medico)
+        medicoService.actualizar(medicoId)
+        
         render "ok sin set"
     }
     
     def actualizarConSet(Long medicoId) {
         Medico medico = medicoService.get(medicoId)
+        println(medico.isDirty())
         medico.cambiarNombreSet("SETTTTTcambiado")
         medico.cambiarNombre("como use set se actualiza")
+       
+        println(medico.isDirty())
         //medico.nombre = "se cambio"
         this.save(medico)
         render "ok con set"

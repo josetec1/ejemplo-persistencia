@@ -10,7 +10,10 @@ class Medico {
     
     Medico (String nombre){this.nombre = nombre}
     
-    def cambiarNombre (String otroNombre){this.nombre = otroNombre}
+    def cambiarNombre (String otroNombre){
+        this.nombre = otroNombre
+        println(this.nombre)
+    }
     
     def cambiarNombreSet (String otroNombre){
         setNombre(otroNombre)
