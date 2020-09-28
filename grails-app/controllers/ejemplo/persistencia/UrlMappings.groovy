@@ -8,7 +8,12 @@ class UrlMappings {
                 // apply constraints here
             }
         }
-
+        actualizarConPunto
+        get "/medico/crear/"(controller: 'medico', action: 'crear')
+        get "/medico/actualizarconset/$medicoId/"(controller: 'medico', action: 'actualizarConSet')
+        get "/medico/actualizarsinset/$medicoId/"(controller: 'medico', action: 'actualizarSinSet')
+        get "/medico/actualizarconpunto/$medicoId/"(controller: 'medico', action: 'actualizarConPunto')
+        
         "/"(view:"/index")
         "500"(view:'/error')
         "404"(view:'/notFound')

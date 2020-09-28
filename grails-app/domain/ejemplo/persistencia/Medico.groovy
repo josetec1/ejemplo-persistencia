@@ -9,4 +9,10 @@ class Medico {
     }
     
     Medico (String nombre){this.nombre = nombre}
+    
+    def cambiarNombre (String otroNombre){this.nombre = otroNombre}
+    
+    def cambiarNombreSet (String otroNombre){
+        setNombre(otroNombre)
+    }
 }

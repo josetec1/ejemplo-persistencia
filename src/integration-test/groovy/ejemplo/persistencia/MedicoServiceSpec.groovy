@@ -26,6 +26,30 @@ class MedicoServiceSpec extends Specification {
         medico.id
     }
     
+    void "07 test funciona sin siquiera llamar a save "() {
+        
+        Long medicoId = setupData()
+        Medico medico = Medico.get(medicoId)
+        Medico vuelvoAtraerAlMedico
+        expect:
+        medico.nombre == "juan"
+        
+        when: 'hago medico.cambiar nombre y sin usar save, vuelvo a sacar al medico del repositorio '
+        medico.cambiarNombre("pedro")
+        //medicoService.save(medico)
+        // sessionFactory.currentSession.flush()
+        vuelvoAtraerAlMedico =medicoService.get(medicoId)
+        
+        then: 'el nombre lo cambio igual como si tuviera un save automatico'
+        vuelvoAtraerAlMedico.nombre == "pedro"
+        vuelvoAtraerAlMedico.nombre != "juan"
+    }
+    
+    
+    
+    
+    
+    
     void "test get"() {
         setupData()
         
@@ -82,4 +106,7 @@ class MedicoServiceSpec extends Specification {
         then:
         medico.id != null
     }
+    
+    
+    
 }

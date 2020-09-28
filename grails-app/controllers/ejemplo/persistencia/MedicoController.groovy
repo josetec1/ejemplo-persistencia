@@ -1,5 +1,6 @@
 package ejemplo.persistencia
 
+import grails.gorm.transactions.Transactional
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
@@ -34,7 +35,7 @@ class MedicoController {
             respond medico.errors, view:'create'
             return
         }
-
+/*
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'medico.label', default: 'Medico'), medico.id])
@@ -42,6 +43,8 @@ class MedicoController {
             }
             '*' { respond medico, [status: CREATED] }
         }
+        
+ */
     }
 
     def edit(Long id) {
@@ -95,5 +98,35 @@ class MedicoController {
             }
             '*'{ render status: NOT_FOUND }
         }
+    }
+    
+    
+    def crear() {
+    
+        Medico medico = new Medico("nombreoriginal")
+        medicoService.save(medico)
+        render medico.id
+    }
+    def actualizarSinSet(Long medicoId) {
+        Medico medico = medicoService.get(medicoId)
+        medico.cambiarNombre("se cambio")
+        this.save(medico)
+        render "ok sin set"
+    }
+    
+    def actualizarConSet(Long medicoId) {
+        Medico medico = medicoService.get(medicoId)
+        medico.cambiarNombreSet("SETTTTTcambiado")
+        medico.cambiarNombre("como use set se actualiza")
+        //medico.nombre = "se cambio"
+        this.save(medico)
+        render "ok con set"
+    }
+    
+    def actualizarConPunto(Long medicoId) {
+        Medico medico = medicoService.get(medicoId)
+        medico.nombre = "se cambio con medico.nombre"
+        this.save(medico)
+        render "ok con punto"
     }
 }
