@@ -13,6 +13,7 @@ class UrlMappings {
         get "/medico/actualizarconset/$medicoId/"(controller: 'medico', action: 'actualizarConSet')
         get "/medico/actualizarsinset/$medicoId/"(controller: 'medico', action: 'actualizarSinSet')
         get "/medico/actualizarconpunto/$medicoId/"(controller: 'medico', action: 'actualizarConPunto')
+        get "/medico/crearpersona/"(controller: 'medico', action: 'crearPersona')
         
         "/"(view:"/index")
         "500"(view:'/error')

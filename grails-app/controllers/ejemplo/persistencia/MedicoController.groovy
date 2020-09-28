@@ -131,4 +131,10 @@ class MedicoController {
         this.save(medico)
         render "ok con punto"
     }
+    
+    def crearPersona() {
+        
+        Persona.get(1).encenderTelefono()
+        render "ok "
+    }
 }
