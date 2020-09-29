@@ -1,6 +1,6 @@
 package ejemplo.persistencia
 
-
+//con esta anotation funciona la herencia sin castear
 @groovy.transform.ToString
 class Medico {
     

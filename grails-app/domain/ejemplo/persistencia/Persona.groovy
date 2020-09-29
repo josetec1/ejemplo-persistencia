@@ -1,5 +1,7 @@
 package ejemplo.persistencia
 
+import grails.compiler.GrailsCompileStatic
+
 class Persona {
     
     Telefono telefono
@@ -14,7 +16,7 @@ class Persona {
         }
         
     }
-    
+    @GrailsCompileStatic
     void encenderTelefono (){
         this.telefono.encender()
     }
